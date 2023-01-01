@@ -12,7 +12,7 @@ const Home = () => {
     navigate('/get-started')
   }
   return (
-    <Box overflow={'hidden'} w='100vw' maxWidth='' minH={'100vh'}>
+    <Box overflow={'hidden'} w='100vw' maxWidth='' minH={'100vh'} position='relative' overflowX={'hidden'}>
       <Navbar/>
       <Box pos="absolute" top="0" right="-20%" h='700px' w='700px' bg='pink.200' overflowX={'hidden'} borderRadius='50%' zIndex={'-10'}/>
       <Box pos="absolute" top="-5%" left="30%" h='300px' w='300px' bg='purple.200' borderRadius='50%' zIndex={'-10'}/>
