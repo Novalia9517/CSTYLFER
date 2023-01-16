@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../Components/Layout'
-import { Box, Text, Grid, Wrap, Flex, InputGroup, InputLeftAddon, Input, Icon } from '@chakra-ui/react'
+import { Box, Text, Grid, Wrap, Flex, InputGroup, InputLeftAddon, Input, Icon, Code } from '@chakra-ui/react'
 import CustomSlider from '../Components/CustomSlider' 
 import { useState } from 'react'
 import { MdContentCopy} from 'react-icons/md'
@@ -9,6 +9,23 @@ const Glassmhorphisme = () => {
   const [blur, setBlur] = useState()
   const [transparancy, setTransparancy] = useState()
   const [color, setColor] = useState()
+
+  const getColor = (e) => {
+    const color = e.target.value
+    const red = parseInt(color.substr(1,2), 16)
+    const green = parseInt(color.substr(3,2), 16)
+    const blue = parseInt(color.substr(5,2), 16)
+    console.log(red, green, blue, transparancy)
+  }
+
+  const glass = ` background: rgba( 234, 83, 83, 0.25 );
+                  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+                  backdrop-filter: blur( 4px );
+                  -webkit-backdrop-filter: blur( 4px );
+                  border-radius: 10px;
+                  border: 1px solid rgba( 255, 255, 255, 0.18 );`
+
+  // console.log(blur, transparancy, color)
   return (
     <Layout>
         <Text fontSize={'3xl'} fontWeight='bold'>Glassmhorphisme</Text>
@@ -20,13 +37,13 @@ const Glassmhorphisme = () => {
         </Flex>
         <Box border='1px' borderColor={'blue.200'} px={42} py={5} mt={5} display='flex'>
           <Box w='70%'>
-            <CustomSlider min={0} max={50} title={'Blur'} change={(e) => setBlur(e)}/>
-            <CustomSlider min={0} max={50} title={'Transparancy'} change={(e) => setTransparancy(e)}/>
+            <CustomSlider min={0} max={20} title={'Blur'} change={(e) => setBlur(e)}/>
+            <CustomSlider min={0} max={1} step={0.05} title={'Transparancy'} change={(e) => setTransparancy(e)}/>
           </Box>
           <Box w='30%' mx={12}>
             <InputGroup size='sm' w={'120px'} color='blue.300' >
                 <InputLeftAddon children='Color' bg={'white'} color='blue.300'/>
-                <Input type='color' _placeholder={{opacity : '0.4', color : 'skyblue'}}  onChange={(e) => setColor(e.target.value)}/>
+                <Input type='color' _placeholder={{opacity : '0.4', color : 'skyblue'}}  onChange={(e) => getColor(e)}/>
             </InputGroup>
           </Box>
         </Box>
@@ -42,6 +59,14 @@ const Glassmhorphisme = () => {
               <Text fontSize={'11px'}>CSS</Text>
               <Icon as={MdContentCopy}/>
             </Flex>
+            <Code 
+              bg='gray.800'
+              color='blue.300' 
+              fontSize={'11px'} mt={3}
+              children={`.neu : { ${glass} }`}
+              >
+              {glass}
+            </Code>
           </Box>
         </Grid>
     </Layout>
