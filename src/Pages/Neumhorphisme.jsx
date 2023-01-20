@@ -26,7 +26,7 @@ const Neumhorphisme = () => {
     const [blur, setBlur] = useState(7)
     const [transparancy, setTransparancy] = useState('')
     const [color, setColor] = useState(`white`)
-    const neu = `${shadowX}px ${shadowY}px ${blur}px ${transparancy}px #666666 -${shadowX}px -${shadowY}px ${blur}px ${transparancy}px #ffffff`
+    const neu = `${distance}px ${distance}px ${distance*2}px gray, -${distance}px -${distance}px ${distance * 2}px #ffffff`
 
     console.log(color)
   return (
@@ -98,7 +98,7 @@ const Neumhorphisme = () => {
               fontSize={'11px'} mt={3}
               children={`.neu : box-shadow : ${neu}`}
               >
-              box-shadow : {neu}
+              {/* box-shadow : {neu} */}
             </Code>
           </Box>
         </Grid>
