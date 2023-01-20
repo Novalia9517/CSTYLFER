@@ -1,17 +1,20 @@
-import { Card, CardBody, Image, Stack, Heading, Text, Divider, HStack } from "@chakra-ui/react";
+import { Card, CardBody, Image, Stack, Heading, Text, Divider, HStack, Link } from "@chakra-ui/react";
 import React from 'react'
 
-const HomeCard = ({title, description, img}) => {
+const HomeCard = ({title, description, img, link}) => {
   return (
     <Card maxW='sm' p='5'  boxShadow='1px 2px 5px #75ADE1'>
     <CardBody>
         <HStack gap={3}>
             <Image w={'50%'}
-            src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
+            src={img}
             alt='Green double couch with wooden legs'
-            borderRadius='lg'
+            borderRadius='10px'
+            h={20}
             />
-            <Heading size='sm' color={'blue.300'}>{title}</Heading>
+            <Link href={link} _hover={{textDecorationColor : '#75ADE1'}}>
+                <Heading size='sm' color={'blue.300'}>{title}</Heading>
+            </Link>
         </HStack>
         <Stack mt='6' spacing='3' h='42'>
             <Text fontSize={'14px'} fontWeight='semibold' color={'gray.600'}>{description}</Text>
