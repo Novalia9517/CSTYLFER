@@ -70,13 +70,13 @@ const Neumhorphisme = () => {
         let rgb2 = `#` + `${(Math.ceil(red * 0.8)).toString(16)}` + `${(Math.ceil(green * 0.8)).toString(16)}` + `${Math.ceil((blue * 0.8)).toString(16)}`
         console.log(rgb1, rgb2)
         if(value == 'concave'){
-        setBackgroundImage(`linear-gradient(280deg, ${rgb1}, ${rgb2});`)
-        setInset(false)
-        setLinear(true)
+          setBackgroundImage(`linear-gradient(280deg, ${rgb1}, ${rgb2});`)
+          setInset(false)
+          setLinear(true)
         }else{
-        setBackgroundImage(`linear-gradient(315deg, ${rgb2}, ${rgb1});`)
-        setInset(false)
-        setLinear(true)
+          setBackgroundImage(`linear-gradient(315deg, ${rgb2}, ${rgb1});`)
+          setInset(false)
+          setLinear(true)
         }
       }
     }
@@ -86,7 +86,7 @@ const Neumhorphisme = () => {
     // console.log(color)
 
     useEffect(() => {
-    },[backGround, backGroundImage, inset, linear])
+    },[backGround, backGroundImage, inset, linear, color, distance, blur, transparancy, neu])
   return (
    <Layout>
     <Text fontSize={'3xl'} fontWeight='bold'>Neumhorphisme</Text>

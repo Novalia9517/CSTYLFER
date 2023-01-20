@@ -119,21 +119,6 @@ const Glassmhorphisme = () => {
             </Box>
           </Box>
           <Grid templateRows={'repeat(2, 1fr)'} gap={1} mt='3'>
-            {/* <Box bg='gray.800' h={'24'} px={5} py={3}>
-              <Flex justifyContent={'space-between'} color='blue.300'>
-                <Text fontSize={'11px'}>HTML</Text>
-                <CopyToClipboard text={`<div class='glass'></div>`}>
-                  <Icon as={MdContentCopy} onClick={() => onCopy(`<div class='glass'></div>`)}/>
-                </CopyToClipboard>
-              </Flex>
-              <Code 
-                bg='gray.800'
-                color='blue.300' 
-                fontSize={'11px'}
-                children={`<div class='glass'></div>`}
-                >
-              </Code>
-            </Box> */}
             <Box bg='gray.800' h={''} px={5} py={3}>
               <Flex justifyContent={'space-between'} color='blue.300'>
                 <Text fontSize={'11px'}>CSS</Text>
