@@ -1,5 +1,5 @@
 import React, { useState} from 'react'
-import { Box, HStack, Icon, Stack, Text } from '@chakra-ui/react'
+import { Box, Hide, HStack, Icon, Stack, Text } from '@chakra-ui/react'
 import { CiSquareQuestion} from 'react-icons/ci'
 import { IoIosCube, IoIosImage, IoIosQuote, IoMdImages, IoMdWater} from 'react-icons/io'
 import { GiGlassHeart} from 'react-icons/gi'
@@ -72,7 +72,9 @@ const SideBard = () => {
                             
                             >
                             <Icon as={item.icon}/>
-                            <Text fontSize={'12px'}>{item.title}</Text>
+                            <Hide below='md'>
+                                <Text fontSize={'12px'}>{item.title}</Text>
+                            </Hide>
                         </HStack>
                     </Link>
         })}
