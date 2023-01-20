@@ -18,14 +18,14 @@ const SideBard = () => {
             link : '/get-started'
         },
         {
-            title : 'Neumhorphisme',
-            icon : IoIosCube,
-            link : '/neu'
-        },
-        {
             title : 'Glassmhorphisme',
             icon : GiGlassHeart,
             link : '/glass'
+        },
+        {
+            title : 'Neumhorphisme',
+            icon : IoIosCube,
+            link : '/neu'
         },
         {
             title : 'Gradient Generator',
