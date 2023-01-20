@@ -33,14 +33,14 @@ const SideBard = () => {
             link : '/gradient'
         },
         {
-            title : 'Geometric Art',
-            icon : IoIosImage,
-            link : '/geo-art'
-        },
-        {
             title : 'Background Pattern',
             icon : IoMdImages,
             link : '/bg-pattern'
+        },
+        {
+            title : 'Geometric Art',
+            icon : IoIosImage,
+            link : '/geo-art'
         },
         {
             title : 'Blob Maker',

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, HStack, Text, InputGroup, InputLeftElement, Input, Icon, Flex, Spacer} from '@chakra-ui/react'
+import { Box, HStack, Text, InputGroup, InputLeftElement, Input, Icon, Flex, Spacer, Tooltip} from '@chakra-ui/react'
 import { Search2Icon, MoonIcon} from '@chakra-ui/icons'
 import { IoLogoGithub} from 'react-icons/io'
 import { ImLinkedin2} from 'react-icons/im'
@@ -22,8 +22,16 @@ const Navbar = () => {
       </InputGroup>
       <Spacer/>
       <HStack color='#1385EF'>
-        <Icon as={IoLogoGithub}/>
-        <Icon as={ImLinkedin2}/>
+        <Tooltip label='Go to Novalia`S Github' bg='blue.300' color='white'>
+          <Link href='https://github.com/Novalia9517' isExternal>
+          <Icon as={IoLogoGithub} />
+          </Link>
+        </Tooltip>
+        <Tooltip label='Go to Novalia`S Linkedin' bg='blue.300' color='white'>
+          <Link href='https://www.linkedin.com/in/nova-lia-53b911261/' isExternal>
+          <Icon as={ImLinkedin2} />
+          </Link>
+        </Tooltip>
         <MoonIcon/>
       </HStack>
     </Flex>

@@ -5,6 +5,10 @@ import HomeCard from '../Components/Card'
 import Footer from '../Components/Footer'
 import Review from '../Components/Review'
 import { useNavigate } from 'react-router-dom'
+import Neu from '../assets/neumhorphisme.png'
+import Glass from '../assets/glassmhorphisme.png'
+import Gradient from '../assets/gradient-generator.png'
+import BgPattern from '../assets/bg-pattern.png'
 
 const Home = () => {
   const navigate = useNavigate()
@@ -40,22 +44,46 @@ const Home = () => {
           gap={4}
         >
           <GridItem colSpan={2} rowSpan={1}>
-            <HomeCard title='Neumhorphisme' description='Neumhorphisme UI help your website look more real and 3D' img=''/>
+            <HomeCard 
+              title='Neumhorphisme' 
+              description='Neumhorphisme UI help your website look more real and 3D'
+              link={'/neu'} 
+              img={Neu}/>
           </GridItem>
           <GridItem colSpan={2}>
-            <HomeCard title='Glassmhorphisme' description='Look glassy and classy. Transparancyis better!' img=''/>
+            <HomeCard 
+              title='Glassmhorphisme' 
+              description='Look glassy and classy. Transparancyis better!' 
+              link={'/glass'} 
+              img={Glass}/>
           </GridItem>
           <GridItem colSpan={2}>
-            <HomeCard title={'Gradient Color'} description='No need to try 1 by 1 the color you need' img=''/>
+            <HomeCard 
+              title={'Gradient Color'} 
+              description='No need to try 1 by 1 the color you need'
+              link={'/gradient'} 
+              img={Gradient}/>
           </GridItem>
           <GridItem colSpan={2}>
-            <HomeCard title='Geometrik Art Generator' description='Drag and drop, then drag and drop, Boom..  make it artistic' img=''/>
+            <HomeCard 
+              title='Geometrik Art Generator' 
+              description='Drag and drop, then drag and drop, Boom..  make it artistic'
+              link={'/geo-art'}  
+              img={BgPattern}/>
           </GridItem>
           <GridItem colSpan={2}>
-            <HomeCard title={'Background Pattern'} description='Choose pattern and make it smoother then ever' img=''/>
+            <HomeCard 
+              title={'Background Pattern'} 
+              description='Choose pattern and make it smoother then ever'
+              link={'/bg-pattern'}  
+              img={Glass}/>
           </GridItem>
           <GridItem colSpan={2} >
-            <HomeCard title='Blob maker' description='Blobing blobing... blobing blobing Make it unique' img=''/>
+            <HomeCard 
+              title='Blob maker' 
+              description='Blobing blobing... blobing blobing Make it unique'
+              link={'/blob-maker'}  
+              img={Glass}/>
           </GridItem>
         </Grid>
       </VStack>
