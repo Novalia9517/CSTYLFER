@@ -90,6 +90,7 @@ const Neumhorphisme = () => {
   return (
    <Layout>
     <Text fontSize={'3xl'} fontWeight='bold'>Neumhorphisme</Text>
+    <Text fontSize={'xl'} fontWeight='bold'>( Bug Fixing on proggress )</Text>
     <Box w='100%' p={10}>
         <Grid templateColumns={'repeat(2, 1fr)'} gap={4} >
             <GridItem 
@@ -194,7 +195,7 @@ const Neumhorphisme = () => {
             </GridItem>
         </Grid>
         <Grid templateColumns={'repeat(2, 1fr)'} gap={4} mt='3'>
-          <Box bg='gray.800' h={'24'} px={5} py={3} mt={3}>
+          <Box bg='gray.800' h={'full'} px={5} py={3} mt={3}>
             <Flex justifyContent={'space-between'} color='blue.300'>
               <Text fontSize={'11px'}>HTML</Text>
               <Icon as={MdContentCopy}/>
@@ -207,7 +208,7 @@ const Neumhorphisme = () => {
               >
             </Code>
           </Box>
-          <Box bg='gray.800' h={'36'} px={5} py={3} mt={3}>
+          <Box bg='gray.800' h={'full'} px={5} py={3} mt={3}>
             <Flex justifyContent={'space-between'} color='blue.300'>
               <Text fontSize={'11px'}>CSS</Text>
               <Icon as={MdContentCopy}/>

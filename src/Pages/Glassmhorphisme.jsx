@@ -119,7 +119,7 @@ const Glassmhorphisme = () => {
             </Box>
           </Box>
           <Grid templateRows={'repeat(2, 1fr)'} gap={1} mt='3'>
-            <Box bg='gray.800' h={''} px={5} py={3}>
+            <Box bg='gray.800' h={'full'} px={5} py={3}>
               <Flex justifyContent={'space-between'} color='blue.300'>
                 <Text fontSize={'11px'}>CSS</Text>
                 <CopyToClipboard text={glass}>

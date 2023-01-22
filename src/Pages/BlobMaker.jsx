@@ -25,22 +25,36 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const BlobMaker = () => {
   const [typeGrad, setTypeGrad] = useState('linear')
-  const [color1, setColor1] = useState('#ff0037')
-  const [color2, setColor2] = useState('#ff4870')
+  const [color1, setColor1] = useState('#07edc7')
+  const [color2, setColor2] = useState('#91a9f3')
   const [color3, setColor3] = useState('#ff90a8')
   const [xAxis, setXAxis] = useState(50)
   const [yAxis, setYAxis] = useState(50)
   const [angle, setAngle] = useState(90)
+  const [border1, setBorder1] = useState(42)
+  const [border2, setBorder2] = useState(62)
+  const [border3, setBorder3] = useState(24)
+  const [border4, setBorder4] = useState(68)
   const [radialType, setRadialType] = useState('circle')
   const [background, setBackground] = useState(`linear-gradient(${angle}deg, ${color1}, ${color2}, ${color3})`)
+  const [blob, setBlob] = useState(`${border1}% ${100 - border1}% ${100 - border3}% ${border3}% / ${border4}%  ${border2}% ${100 - border2}% ${100 - border4}%`)
 
-  const gradient = `.gradient {
-                      background-image : ${background}
+
+  const gradient = `.blob {
+                      width : '300px', //custom your own width
+                      height : '230px', //custom your own height
+                      background-image : ${background},
+                      border-radius : ${blob}
                     }`
 
   const clicked = (type, num) => {
     setTypeGrad(type)
     getBackground()
+  }
+
+  const onBlob = (choose, value) => {
+    choose(value)
+    blobing
   }
 
   const getBackground = () => {
@@ -56,8 +70,13 @@ const BlobMaker = () => {
       setBackground(bg)
     }
     setBackground(bg)
+    blobing()
   }
 
+  const blobing = () => {
+    let radius = `${border1}% ${100 - border1}% ${100 - border3}% ${border3}% / ${border4}%  ${border2}% ${100 - border2}% ${100 - border4}%`
+    setBlob(radius)
+  }
   const onCopy = (value) => {
     toast.success('🦄 Wow so easy!', {
       position: "bottom-center",
@@ -74,51 +93,65 @@ const BlobMaker = () => {
 
   useEffect(() => {
     getBackground()
-  },[typeGrad, xAxis, yAxis, angle, radialType, color1, color2, color3])
+  },[typeGrad, xAxis, yAxis, angle, radialType, color1, color2, color3, border1, border2, border3, border4])
 
-  console.log(color1, color2, color3)
   return (
     <Layout>
-        <Text fontSize={'3xl'} fontWeight='bold'>Gradient Generator</Text>
-        <Grid templateColumns={'repeat(2, 1fr)'} gap={4}>
-          <Flex 
+        <Text fontSize={'3xl'} fontWeight='bold'>Blob Maker</Text>
+        <Grid 
+          templateColumns={'repeat(2, 1fr)'} 
+          gap={8} display={'flex'} 
+          flexDirection={{sm : 'column', md : 'column', lg : 'row'}}
+          flexWrap={'wrap'}
+          h='full'
+          >
+          <GridItem
             align='center'
             zIndex={'-10'}
-            w={96}
-            h={96} bg='gray.200' 
+            xs={12} md={12} lg={6}
+            px={8}
+            bg='gray.200' 
             rounded={'md'} 
             display='grid' 
             overflow="hidden" 
             justifyContent={'center'} 
-            alignItems='center' 
+            alignItems='center'
             border='1px' 
             borderColor={'pink.300'}>
               <Box 
-                w={80} 
-                h={'60%'} 
+                w={{lg : 80, sm : 48}}
+                // w={'60%'}
+                h={'55%'} 
                 display='block' 
-                overflowX='hidden' 
-                bg={'pink.300'}
-                backgroundImage={ background}
+                overflowX='hidden'
+                backgroundImage={background}
                 rounded={'xl'}
+                borderRadius={blob}
                 ></Box>
-          </Flex>
-          <GridItem w={'100%'} h='350px'>
+          </GridItem>
+          <GridItem xs={12} md={12} lg={6} h='full'>
                 <Text textAlign={'center'} fontWeight='semibold'>Change Below</Text>
                 <Grid 
                   templateColumns={'repeat(3, 1fr)'} 
                   mt={3} 
-                  width={'50%'}
+                  width={'100%'}
                   height={12}
+                  border='1px' 
+                  borderColor={'blue.400'} 
+                  borderRadius={'10px'}
+                  display={'flex'}
+                  justifyContent={'start'}
+                  alignItems={'center'}
+                  px={3}
+                  gap={4}
                   >
-                    {/* <InputGroup size='sm' w={20} color='blue.300'   borderRadius={'50%'}> */}
+                    <Text fontWeight={'bold'}>Gradient Color :</Text>
                         <Input type='color' value={color1} w={16}
                         onChange={(e) => setColor1(e.target.value)}/>
                         <Input type='color' value={color2} w={16}
                         onChange={(e) => setColor2(e.target.value)}/>
                         <Input type='color' value={color3} w={16}
                         onChange={(e) => setColor3(e.target.value)}/>
-                    {/* </InputGroup> */}
                   </Grid>
                 <Grid 
                   templateColumns={'repeat(3, 1fr)'} 
@@ -180,13 +213,25 @@ const BlobMaker = () => {
                 </Stack>
                 : null
                 }
+                <Grid border='1px' h={'full'} borderColor={'blue.400'} borderRadius={'10px'} p={5}>
+                  <CustomSlider min={20} max={100} value={border1} title={'Border Radius 1'} change={(e) => onBlob(setBorder1,e)}/>
+                  <CustomSlider min={20} max={100} value={border2} title={'Border Radius 2'} change={(e) => onBlob(setBorder2,e)}/>
+                  <CustomSlider min={20} max={100} value={border3} title={'Border Radius 3'} change={(e) => onBlob(setBorder3,e)}/>
+                  <CustomSlider min={20} max={100} value={border4} title={'Border Radius 4'} change={(e) => onBlob(setBorder4,e)}/>
+                </Grid>
             </GridItem>
         </Grid>
-        <Grid templateColumns={'repeat(2, 1fr)'} gap={4} mt='3'>
-          <Box bg='gray.800' h={'24'} px={5} py={3} mt={3}>
+        <Grid 
+          templateColumns={'repeat(2, 1fr)'} 
+          gap={4} mt={5}
+          display={'flex'}
+          flexDirection={{xs : 'column', sm : 'column', md : 'row', lg:'row'}}
+          flexWrap={'wrap'}
+          >
+          <Box bg='gray.800' h={'full'} px={5} py={3} mt={3}>
             <Flex justifyContent={'space-between'} color='blue.300'>
               <Text fontSize={'11px'}>HTML</Text>
-              <CopyToClipboard text={'<div class="gradient"></div>'}>
+              <CopyToClipboard text={'<div class="blob"></div>'}>
                 <Icon as={MdContentCopy}  onClick={() => onCopy(`HTML Code Copied`)}/>
               </CopyToClipboard>
             </Flex>
@@ -194,11 +239,11 @@ const BlobMaker = () => {
               bg='gray.800'
               color='blue.300' 
               fontSize={'11px'} mt={3}
-              children='<div class="gradient"></div>'
+              children='<div class="blob"></div>'
               >
             </Code>
           </Box>
-          <Box bg='gray.800' h={'32'} px={5} py={3} mt={3}>
+          <Box bg='gray.800' h={'full'} px={5} py={3} mt={3}>
             <Flex justifyContent={'space-between'} color='blue.300'>
               <Text fontSize={'11px'}>CSS</Text>
               <CopyToClipboard text={gradient}>
@@ -210,7 +255,7 @@ const BlobMaker = () => {
                 bg='gray.800'
                 color='blue.300' 
                 fontSize={'11px'} mt={3}
-                children={`.gradient {`}
+                children={`.blob {`}
                 >
               </Code>
               <Code 
@@ -218,7 +263,8 @@ const BlobMaker = () => {
                 color='blue.300' 
                 fontSize={'11px'} ml={3}
                 >
-                  background-image : {background}
+                  background-image : {background}; <br/>
+                  borderRadius : {blob};
               </Code>
               <Code 
                 bg='gray.800'

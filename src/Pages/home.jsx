@@ -5,22 +5,32 @@ import HomeCard from '../Components/Card'
 import Footer from '../Components/Footer'
 import Review from '../Components/Review'
 import { useNavigate } from 'react-router-dom'
-import Neu from '../assets/neumhorphisme.png'
-import Glass from '../assets/glassmhorphisme.png'
-import Gradient from '../assets/gradient-generator.png'
-import BgPattern from '../assets/bg-pattern.png'
+import Neu from '../assets/neu-new.png'
+import Glass from '../assets/glass-new.png'
+import Gradient from '../assets/gradient.png'
+import BgPattern from '../assets/pattern-new.png'
+import Blob from '../assets/blob-page.png'
+import { motion } from 'framer-motion'
 
 const Home = () => {
   const navigate = useNavigate()
   const getStarted = () => {
     navigate('/get-started')
   }
+  const parentAnimate = {
+    hidden : {opacity : 0},
+    show : { opacity : 1, transition : {staggerChildren : 0.13}}
+  }
+  const circleAnimate = {
+    hidden : {opacity : 0, x :'100vw'},
+    show : { opacity : 1, transition : {staggerChildren : 0.13}, x : '0'}
+  }
   return (
-    <Box overflow={'hidden'} w='100vw' maxWidth='' minH={'100vh'} position='relative' overflowX={'hidden'}>
+    <Box as={motion.div} variants={parentAnimate} initial='hidden' animate='show' overflow={'hidden'} w='100vw' maxWidth='' minH={'100vh'} position='relative' overflowX={'hidden'}>
       <Navbar/>
-      <Box pos="absolute" top="0" right="-20%" h='700px' w='700px' bg='pink.200' overflowX={'hidden'} borderRadius='50%' zIndex={'-10'}/>
-      <Box pos="absolute" top="-5%" left="30%" h='300px' w='300px' bg='purple.200' borderRadius='50%' zIndex={'-10'}/>
-      <Box pos="absolute" top="20%" left="10%" h='300px' w='300px' bg='blue.200' borderRadius='50%' zIndex={'-10'}/>
+      <Box as={motion.div} variants={circleAnimate} initial='hidden' animate='show' pos="absolute" top="0" right="-20%" h='700px' w='700px' bg='pink.200' overflowX={'hidden'} borderRadius='50%' zIndex={'-10'}/>
+       <Box as={motion.div} variants={circleAnimate} initial='hidden' animate='show' pos="absolute" top="-5%" left="30%" h='300px' w='300px' bg='purple.200' borderRadius='50%' zIndex={'-10'}/>
+      <Box as={motion.div} variants={circleAnimate} initial='hidden' animate='show' pos="absolute" top="20%" left="10%" h='300px' w='300px' bg='blue.200' borderRadius='50%' zIndex={'-10'}/>
       <VStack h='90vh' w={'100%'} py='16'>
         <Box fontSize={'5xl'} fontWeight='bold' display={'flex'}>
           Build <Text color='pink.300' ml={3}>Beau</Text><Text color='purple.400' mr={3}>tiful</Text>
@@ -64,32 +74,32 @@ const Home = () => {
               link={'/gradient'} 
               img={Gradient}/>
           </GridItem>
-          <GridItem colSpan={2}>
+          {/* <GridItem colSpan={2}>
             <HomeCard 
               title='Geometrik Art Generator' 
               description='Drag and drop, then drag and drop, Boom..  make it artistic'
               link={'/geo-art'}  
               img={BgPattern}/>
-          </GridItem>
+          </GridItem> */}
           <GridItem colSpan={2}>
             <HomeCard 
               title={'Background Pattern'} 
               description='Choose pattern and make it smoother then ever'
               link={'/bg-pattern'}  
-              img={Glass}/>
+              img={BgPattern}/>
           </GridItem>
           <GridItem colSpan={2} >
             <HomeCard 
               title='Blob maker' 
               description='Blobing blobing... blobing blobing Make it unique'
               link={'/blob-maker'}  
-              img={Glass}/>
+              img={Blob}/>
           </GridItem>
         </Grid>
       </VStack>
       <VStack h='100%' w={'100%'} py='4'>
         <Box fontSize={'4xl'} fontWeight='bold' display={'flex'} color='gray.600'>
-          What They Said About
+          Tech Stack
           <Text fontSize='36px' color='pink.200' textShadow='0px 3px 5px skyblue' fontWeight='bold' ml={3}>CStylfer</Text>
         </Box>
         <Grid
@@ -97,9 +107,9 @@ const Home = () => {
           templateColumns='repeat(6, 1fr)' mb={10}
           gap={4}
         >
-          <Review top='20%' left='10%' color='blue.200' title='Name' rev='This help me so much. I dont wasting my time to try one by one' id={'one'}/>
-          <Review top='70%' left='50%' color='purple.200' title='Name' rev='This help me so much. I dont wasting my time to try one by one' id={'two'}/>
-          <Review top='0%' left='100%' color='pink.200' title='Name' rev='This help me so much. I dont wasting my time to try one by one' id={'three'}/>
+          <Review top='10%' left='10%' color='blue.200' title='ReactJS' rev='Javascript most populer framework, easy to use.' id={'one'}/>
+          <Review top='30%' left='30%' color='purple.200' title='ChakraUI' rev='CSS framework with Clean UI' id={'two'}/>
+          <Review top='30%' left='50%' color='pink.200' title='Framer motion' rev='Animate better and smoother' id={'three'}/>
         </Grid>
       </VStack>
       <Footer/>

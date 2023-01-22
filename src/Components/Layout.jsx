@@ -8,9 +8,9 @@ const Layout = ({children}) => {
   return (
     <Box>
         <Navbar/>
-        <Flex>
+        <Flex minHeight={'full'}>
             <SideBard/>
-            <Box border='1px' borderColor='blue.300' p='10' w='100%' mr={'8'} color='gray.600'>
+            <Box border='1px' height={'full'} borderColor='blue.300' p='10' w='80vw' mr={'8'} color='gray.600'>
                 {children}
             </Box>
         </Flex>
