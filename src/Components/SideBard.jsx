@@ -23,11 +23,6 @@ const SideBard = () => {
             link : '/glass'
         },
         {
-            title : 'Neumhorphisme',
-            icon : IoIosCube,
-            link : '/neu'
-        },
-        {
             title : 'Gradient Generator',
             icon : MdOutlineGradient,
             link : '/gradient'
@@ -37,48 +32,59 @@ const SideBard = () => {
             icon : IoMdImages,
             link : '/bg-pattern'
         },
-        {
-            title : 'Geometric Art',
-            icon : IoIosImage,
-            link : '/geo-art'
-        },
+        // {
+        //     title : 'Geometric Art',
+        //     icon : IoIosImage,
+        //     link : '/geo-art'
+        // },
         {
             title : 'Blob Maker',
             icon : IoMdWater,
             link : '/blob-maker'
+        },
+        {
+            title : 'Neumhorphisme',
+            icon : IoIosCube,
+            link : '/neu'
         },
     ]
 
 
   return (
     <Stack 
-        h='90vh' w='20%' mx={10} 
-        border={'1px'} 
-        borderColor='blue.300' 
-        alignItems={'left'} 
-        py='10' px='8' 
-        color={'gray.500'} 
-        cursor='pointer'>
-        { dataPath.map((item, i) => {
-            return <Link 
-                        key={i}
-                        as={ReactLink} 
-                        to={item.link} 
-                        _hover={{textDecoration: 'none', textShadow : '1px 1px 1px blue'}}
-                        >
-                        <HStack 
-                            color={activeLink == item.link ? 'blue.300' : 'gray.400'}
-                            fontWeight={activeLink == item.link ? 'bold' : 'semibold'}
-                            
+        h='100%' 
+        w='20vw'
+        px={5}
+       >
+            <Stack
+                 h='100vh' 
+                border={'1px'} 
+                 borderColor='blue.300' 
+                 alignItems={'left'} 
+                 py='10' px='8' 
+                 color={'gray.500'} 
+                 cursor='pointer'
+            >
+            { dataPath.map((item, i) => {
+                return <Link 
+                            key={i}
+                            as={ReactLink} 
+                            to={item.link} 
+                            _hover={{textDecoration: 'none', textShadow : '1px 1px 1px blue'}}
                             >
-                            <Icon as={item.icon}/>
-                            <Hide below='md'>
-                                <Text fontSize={'12px'}>{item.title}</Text>
-                            </Hide>
-                        </HStack>
-                    </Link>
-        })}
-        
+                            <HStack 
+                                color={activeLink == item.link ? 'blue.300' : 'gray.400'}
+                                fontWeight={activeLink == item.link ? 'bold' : 'semibold'}
+                                
+                                >
+                                <Icon as={item.icon}/>
+                                <Hide below='md'>
+                                    <Text fontSize={'12px'}>{item.title}</Text>
+                                </Hide>
+                            </HStack>
+                        </Link>
+            })}
+            </Stack>
     </Stack>
   )
 }

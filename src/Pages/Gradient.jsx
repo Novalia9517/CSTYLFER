@@ -183,7 +183,7 @@ const Gradient = () => {
             </GridItem>
         </Grid>
         <Grid templateColumns={'repeat(2, 1fr)'} gap={4} mt='3'>
-          <Box bg='gray.800' h={'24'} px={5} py={3} mt={3}>
+          <Box bg='gray.800' h={'full'} px={5} py={3} mt={3}>
             <Flex justifyContent={'space-between'} color='blue.300'>
               <Text fontSize={'11px'}>HTML</Text>
               <CopyToClipboard text={'<div class="gradient"></div>'}>
@@ -198,7 +198,7 @@ const Gradient = () => {
               >
             </Code>
           </Box>
-          <Box bg='gray.800' h={'32'} px={5} py={3} mt={3}>
+          <Box bg='gray.800' h={'full'} px={5} py={3} mt={3}>
             <Flex justifyContent={'space-between'} color='blue.300'>
               <Text fontSize={'11px'}>CSS</Text>
               <CopyToClipboard text={gradient}>
