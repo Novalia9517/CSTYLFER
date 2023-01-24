@@ -22,23 +22,25 @@ import {BsArrowUpLeftSquare} from 'react-icons/bs'
 import { useEffect } from 'react'
 
 const Neumhorphisme = () => {
-    const [width, setWidth] = useState(100)
-    const [height, setHeight] = useState(100)
-    const [borderRadius, setBorderRadius] = useState('')
+    const [width, setWidth] = useState(200)
+    const [height, setHeight] = useState(200)
+    const [borderRadius, setBorderRadius] = useState(10)
     const [distance, setDistance] = useState(7)
     const [blur, setBlur] = useState(7)
     const [transparancy, setTransparancy] = useState('')
     const [intensity, setIntensity] = useState()
     const [linear, setLinear] = useState(false)
-    const [color, setColor] = useState(`#ffffff`)
-    const [backGround, setBackground] = useState()
-    const [backGroundImage, setBackgroundImage] = useState()
+    const [color, setColor] = useState(`#fd5353`)
+    const [backGround, setBackground] = useState('#fd5353')
+    const [backGroundImage, setBackgroundImage] = useState('')
     const [inset, setInset] = useState(false)
+    const [currValue, setCurrVal] = useState('TopLeft')
     const [neu,setNeu] = useState(`${distance}px ${distance}px ${blur}px gray, -${distance}px -${distance}px ${blur}px #ffffff`)
 
     const DistanceChange  = (e) => {
       setDistance(e)
-      setBlur( e * 2)
+      setBlur(e * 2)
+      setNeu(neu)
     }
     const AllDirections = {
       TopLeft : `${inset ? 'inset' : ''} ${distance}px ${distance}px ${blur}px gray, ${inset ? 'inset' : ''} -${distance}px -${distance}px ${blur}px #ffffff`,
@@ -48,8 +50,9 @@ const Neumhorphisme = () => {
     }
 
     const onDirectionChange = (value) => {
-      setNeu(AllDirections[value])
-      console.log(neu)
+      const newNeu = AllDirections[value]
+      setNeu(newNeu)
+      setCurrVal(value)
     }
 
     const onChooseType = (value) =>{
@@ -63,12 +66,18 @@ const Neumhorphisme = () => {
         setLinear(false)
       }else{
         console.log(color)
-        const red = parseInt(color.substr(1,2), 16)
-        const green = parseInt(color.substr(3,2), 16)
-        const blue = parseInt(color.substr(5,2), 16)
-        let rgb1 = `#` + `${(Math.ceil(red * 1.2)).toString(16)}` + `${(Math.ceil(green * 1.2)).toString(16)}` + `${Math.ceil((blue * 1.2)).toString(16)}`
+        console.log(color.substring(1,3))
+        let red = parseInt(color.substring(1,3), 16)
+        let green = parseInt(color.substring(3,5), 16)
+        let blue = parseInt(color.substring(5,7), 16)
+        console.log('before', red , green, blue)
+        let newRed  = Math.ceil(red * 1.2) <= 255 ? Math.ceil(red * 1.2) : 255
+        let newGreen  = Math.ceil(green * 1.2) <= 255 ? Math.ceil(green * 1.2) : 255
+        let newBlue  = Math.ceil(blue * 1.2) <= 255 ? Math.ceil(blue * 1.2) : 255
+        console.log('after', red,green,blue)
+        let rgb1 = `#` + `${newRed.toString(16)}` + `${newGreen.toString(16)}` + `${newBlue.toString(16)}`
         let rgb2 = `#` + `${(Math.ceil(red * 0.8)).toString(16)}` + `${(Math.ceil(green * 0.8)).toString(16)}` + `${Math.ceil((blue * 0.8)).toString(16)}`
-        console.log(rgb1, rgb2)
+        // console.log(rgb1, rgb2)
         if(value == 'concave'){
           setBackgroundImage(`linear-gradient(280deg, ${rgb1}, ${rgb2});`)
           setInset(false)
@@ -79,14 +88,13 @@ const Neumhorphisme = () => {
           setLinear(true)
         }
       }
+      setNeu(neu)
+
     }
-    // console.log(backGround)
-    // console.log(backGroundImage)
-    // console.log(inset)
-    // console.log(color)
 
     useEffect(() => {
-    },[backGround, backGroundImage, inset, linear, color, distance, blur, transparancy, neu])
+      onDirectionChange(currValue)
+    })
   return (
    <Layout>
     <Text fontSize={'3xl'} fontWeight='bold'>Neumhorphisme</Text>
@@ -152,12 +160,12 @@ const Neumhorphisme = () => {
                 <Grid templateColumns={'repeat(2, 1fr)'} gap={4} mt={3}>
                     <InputGroup size='sm' color='blue.300' border={'2px'}>
                         <InputLeftAddon children='Width' bg={'white'} />
-                        <Input type='number' placeholder='max 350' _placeholder={{opacity : '0.4', color : 'skyblue'}} onChange={(e) => e.target.value < 350 ? setWidth(e.target.value) : setWidth(350)}/>
+                        <Input type='number' placeholder='max 350' value={width} _placeholder={{opacity : '0.4', color : 'skyblue'}} onChange={(e) => e.target.value < 350 ? setWidth(e.target.value) : setWidth(350)}/>
                         <InputRightAddon children='px' bg='white'/>
                     </InputGroup>
                     <InputGroup size='sm' color='blue.300' border={'2px'}>
                         <InputLeftAddon children='Height' bg={'white'} color='blue.300'/>
-                        <Input type='number' placeholder='max 350' _placeholder={{opacity : '0.4', color : 'skyblue'}}  onChange={(e) => e.target.value < 350 ? setHeight(e.target.value) : setHeight(350)}/>
+                        <Input type='number' placeholder='max 350' value={height} _placeholder={{opacity : '0.4', color : 'skyblue'}}  onChange={(e) => e.target.value < 350 ? setHeight(e.target.value) : setHeight(350)}/>
                         <InputRightAddon children='px' bg={'white'} color='blue.300'/>
                     </InputGroup>
                 </Grid>
@@ -167,9 +175,8 @@ const Neumhorphisme = () => {
                 </InputGroup>
                 <CustomSlider min={0} max={50} title={'Border Radius'} change={(e) => setBorderRadius(e)}/>
                 <CustomSlider min={0} max={50} title={'Blur'} value={blur} change={(e) => setBlur(e)}/>
-                <CustomSlider min={5} max={50} title={'Distance'} change={(e) => DistanceChange(e)}/>
-                {/* <CustomSlider min={0} max={35} title={'Transparancy'} change={(e) => setTransparancy(e)}/> */}
-                <CustomSlider min={0} max={0.6} step={0.01} title={'Intensity'} change={(e) => setIntensity(e)}/>
+                <CustomSlider min={5} max={50} title={'Distance'} value={distance} change={(e) => DistanceChange(e)}/>
+                {/* <CustomSlider min={0.01} max={0.6} step={0.01} title={'Intensity'} change={(e) => setIntensity(e)}/> */}
                 <Grid display={'flex'} width='100%' border={'1px'} mt={2} color='pink.400'>
                   <Button 
                     w={'25%'} 
