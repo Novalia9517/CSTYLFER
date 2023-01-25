@@ -78,7 +78,7 @@ const SideBard = () => {
                                 
                                 >
                                 <Icon as={item.icon}/>
-                                <Hide below='md'>
+                                <Hide below='lg'>
                                     <Text fontSize={'12px'}>{item.title}</Text>
                                 </Hide>
                             </HStack>

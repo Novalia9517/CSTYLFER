@@ -6,11 +6,11 @@ import SideBard from './SideBard'
 
 const Layout = ({children}) => {
   return (
-    <Box>
+    <Box maxW={'100vw'}>
         <Navbar/>
         <Flex minHeight={'full'}>
             <SideBard/>
-            <Box border='1px' height={'full'} borderColor='blue.300' p='10' w='80vw' mr={'8'} color='gray.600'>
+            <Box border='1px' height={'full'} borderColor='blue.300' p='10' w='75vw' mr={'2'} color='gray.600'>
                 {children}
             </Box>
         </Flex>
