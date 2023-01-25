@@ -57,7 +57,7 @@ const SideBard = () => {
         px={5}
        >
             <Stack
-                 h='100vh' 
+                minH='100vh' 
                 border={'1px'} 
                  borderColor='blue.300' 
                  alignItems={'left'} 
