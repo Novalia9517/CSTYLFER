@@ -12,7 +12,9 @@ import {
   Input,
   Code,
   Icon,
-  Grid
+  Grid,
+  SimpleGrid,
+  GridItem
 } from '@chakra-ui/react'
 import { useState } from 'react'
 import CustomSlider from '../Components/CustomSlider'
@@ -119,62 +121,76 @@ const BgPattern = () => {
   return (
     <Layout>
         <Text fontSize={'3xl'} fontWeight='bold'>Background Pattern</Text>
-        <Flex align='center' w={'full'} h={96} bg='blue.800' rounded={'md'} overflow="auto" justifyContent={'space-between'} alignItems='center' border='1px' borderColor={'pink.300'} px={4}>
+        <SimpleGrid columns={[1, null, 4]} spacing='20px' w={'full'} minH={96} bg='blue.800' rounded={'md'} overflow="auto" border='1px' borderColor={'pink.300'}p={4}>
               <VStack>
                 <Box
                   h='100px' 
                   w='200px' 
                   style={styles.volca}
+                  border={'4px'} borderColor={'pink.400'}
+                  onClick={() => changeBg('volca')}
                   >
-                    <Button size={'small'} p={2} bg={'blue.300'} style={buttonStyle} onClick={() => changeBg('volca')}>Try this Pattern</Button>
+                    <Button size={'small'} p={2} bg={'blue.300'} style={buttonStyle}>Try this Pattern</Button>
                   </Box>
                 <Box 
                   h='100px' 
                   w='200px'
                   style={styles.lineTick}
+                  border={'4px'} borderColor={'pink.400'}
+                  onClick={() => changeBg('lineTick')}
                   >
-                    <Button  size={'small'} p={2} bg={'blue.300'} style={buttonStyle} onClick={() => changeBg('lineTick')}>Try this Pattern</Button>
+                    <Button  size={'small'} p={2} bg={'blue.300'} style={buttonStyle} 
+                    onClick={() => changeBg('lineTick')}>Try this Pattern</Button>
                     </Box>
                 <Box
                   h='100px' 
                   w='200px' 
                   style={styles.line2}
+                  border={'4px'} borderColor={'pink.400'}
                   onClick={() => changeBg('line2')}
                   >
-                      <Button  size={'small'} p={2} bg={'blue.300'} style={buttonStyle} onClick={() => changeBg('line2')}>Try this Pattern</Button>
+                      <Button  size={'small'} p={2} bg={'blue.300'} style={buttonStyle}>Try this Pattern</Button>
                     </Box>
               </VStack>
-            <Box 
-              w={'500px'} 
-              h={'70%'} 
-              display='block' 
-              overflowX='hidden' 
-              style={activeBg}
-              ></Box>
+              <GridItem colSpan={[1,null,2]}>
+                <Box 
+                  w={['200px', '400px', '500px']} 
+                  h={'250px'} 
+                  display='block' 
+                  overflowX='hidden' 
+                  style={activeBg}
+                  ></Box>
+              </GridItem>
               <VStack>
                 <Box
                   h='100px' 
                   w='200px' 
                   style={styles.diagonal}
+                  border={'4px'} borderColor={'pink.400'}
+                  onClick={() => changeBg('diagonal')}
                   >
-                      <Button size={'small'} p={2} bg={'blue.300'} style={buttonStyle} onClick={() => changeBg('diagonal')}>Try this Pattern</Button>
+                      <Button size={'small'} p={2} bg={'blue.300'} style={buttonStyle}>Try this Pattern</Button>
                   </Box>
                 <Box
                   h='100px' 
                   w='200px' 
                   style={styles.square}
+                  border={'4px'} borderColor={'pink.400'}
+                  onClick={() => changeBg('square')}
                   >
-                      <Button  size={'small'} p={2} bg={'blue.300'} style={buttonStyle} onClick={() => changeBg('square')}>Try this Pattern</Button>
+                      <Button  size={'small'} p={2} bg={'blue.300'} style={buttonStyle}>Try this Pattern</Button>
                   </Box>
                 <Box
                   h='100px' 
                   w='200px'
                   style={styles.squareDiag}
+                  border={'4px'} borderColor={'pink.400'}
+                  onClick={() => changeBg('squareDiag')}
                   >
-                      <Button  size={'small'} p={2} bg={'blue.300'} style={buttonStyle} onClick={() => changeBg('squareDiag')}>Try this Pattern</Button>
+                      <Button  size={'small'} p={2} bg={'blue.300'} style={buttonStyle}>Try this Pattern</Button>
                   </Box>
               </VStack>
-        </Flex>
+        </SimpleGrid>
         <Flex gap={4} mt={3} border={'1px'} borderColor={'blue.300'} p={3}>
           <Box w={'50%'} >
               <CustomSlider 
@@ -209,8 +225,8 @@ const BgPattern = () => {
               </InputGroup>
             </Box>
         </Flex>
-        <Flex gap={3}>
-          <Box w={'50%'}bg='gray.800' h={'24'} px={5} py={3} mt={5}>
+        <SimpleGrid columns={[1, null, 2]} spacing='20px'>
+          <Box w={'full'}bg='gray.800' h={'24'} px={5} py={3} mt={5}>
             <Flex justifyContent={'space-between'} color='blue.300'>
               <Text fontSize={'11px'}>HTML</Text>
               <CopyToClipboard text={`<div class='glass'></div>`}>
@@ -225,7 +241,7 @@ const BgPattern = () => {
               >
             </Code>
           </Box>
-          <Grid w={'50%'} templateRows={'repeat(2, 1fr)'} gap={1} mt='3'>
+          <Grid w={'full'} templateRows={'repeat(2, 1fr)'} gap={1} mt='3'>
               <Box bg='gray.800' h={''} px={5} py={3}>
                 <Flex justifyContent={'space-between'} color='blue.300'>
                   <Text fontSize={'11px'}>CSS</Text>
@@ -267,7 +283,7 @@ const BgPattern = () => {
                 </Box>
               </Box>
             </Grid>
-        </Flex>
+        </SimpleGrid>
     </Layout>
   )
 }
