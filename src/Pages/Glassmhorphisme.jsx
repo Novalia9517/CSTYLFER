@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../Components/Layout'
-import { Box, Text, Grid, Wrap, Flex, InputGroup, InputLeftAddon, Input, Icon, Code } from '@chakra-ui/react'
+import { Box, Text, Grid, Wrap, Flex, InputGroup, InputLeftAddon, Input, Icon, Code, GridItem } from '@chakra-ui/react'
 import CustomSlider from '../Components/CustomSlider' 
 import { useState } from 'react'
 import { MdContentCopy} from 'react-icons/md'
@@ -52,10 +52,23 @@ const Glassmhorphisme = () => {
   return (
     <Layout>
         <Text fontSize={'3xl'} fontWeight='bold'>Glassmhorphisme</Text>
-        <Flex align='center' position={'relative'} zIndex={'-10'}w={'100%'} h={96} bg='blue.300' rounded={'md'} display='grid' overflow="hidden" justifyContent={'center'} alignItems='center' border='1px' borderColor={'pink.300'}>
+        <Flex 
+          flexWrap={'wrap'}
+          align='center' 
+          position={'relative'} 
+          zIndex={'-10'}
+          w={'100%'} 
+          minH={96} bg='blue.300' 
+          rounded={'md'} 
+          display='grid' 
+          overflow="hidden" 
+          justifyContent={'center'} 
+          alignItems='center' 
+          border='1px' 
+          borderColor={'pink.300'}>
             <Box 
-              w={'600px'} 
-              h={'300px'} 
+              w={{lg : '600px', md : '400px', sm : '200px', base : '90%'}} 
+              h={{lg : '300px', md : '300px', sm : '80%', base : '80%'}}
               display='flex'
               justifyContent={'center'}
               alignItems={'center'}
@@ -68,8 +81,8 @@ const Glassmhorphisme = () => {
               bg={`rgba( ${red}, ${green}, ${blue}, ${transparancy} )`}
               color={'white'}
               >
-                <Text fontSize={'xl'} fontWeight='bold'>Hi, There</Text>
-                <Text fontSize={'xl'} fontWeight='bold'>This is Glassmhorphisme</Text>
+                <Text fontSize={{md : 'xl', sm : 'xs'}} fontWeight='bold'>Hi, There</Text>
+                <Text fontSize={{md : 'xl', sm : 'xs'}} fontWeight='bold'>This is Glassmhorphisme</Text>
 
               </Box>
             <Box 
@@ -88,35 +101,39 @@ const Glassmhorphisme = () => {
             <Box pos="absolute" bottom="-25%" left="40%" h='200px' w='200px' bgGradient='linear(to-r, green.200, pink.500)' borderRadius='50%' zIndex={'-10'}/>
             <Box pos="absolute" top="10%" left="5%" h='200px' w='200px' bgGradient='linear(to-l, purple.300, gray.400)' borderRadius='50%' zIndex={'-10'}/>
         </Flex>
-        <Grid templateColumns={'repeat(2, 1fr)'} gap={4} mt='3' height={72}>
-          <Box display='flex' flexDirection={'column'}>
-          <Box px={5} py={5} mt={5} border='1px' borderColor={'blue.200'}>
-            <Box w='full'>
-              <CustomSlider min={0} max={20}step={0.5}  value={blur} title={'Blur'} change={(e) => setBlur(e)}/>
-              <CustomSlider min={0} max={1} step={0.05} value={transparancy} title={'Transparancy'} change={(e) => setTransparancy(e)}/>
+        <Grid 
+          gap={4} mt='3' 
+          height={'full'}
+          display={'flex'}
+          flexWrap={'wrap'}>
+          <Box w={{md : '50%', base : 'full'}} display='flex' flexDirection={'column'} flexWrap={'wrap'}>
+            <Box px={5} py={5} mt={5} border='1px' borderColor={'blue.200'}>
+              <Box w='full'>
+                <CustomSlider min={0} max={20}step={0.5}  value={blur} title={'Blur'} change={(e) => setBlur(e)}/>
+                <CustomSlider min={0} max={1} step={0.05} value={transparancy} title={'Transparancy'} change={(e) => setTransparancy(e)}/>
+              </Box>
+              <Box w='full' mt={3}>
+                <InputGroup size='sm' w={40} color='blue.300' border={'1px solid skyblue'}>
+                    <InputLeftAddon children='Glass Color' bg={'white'} color='blue.300'/>
+                    <Input type='color' value={colors} _placeholder={{opacity : '0.4', color : 'skyblue'}}  onChange={(e) => getColor(e)}/>
+                </InputGroup>
+              </Box>
             </Box>
-            <Box w='full' mt={3}>
-              <InputGroup size='sm' w={40} color='blue.300' border={'1px solid skyblue'}>
-                  <InputLeftAddon children='Glass Color' bg={'white'} color='blue.300'/>
-                  <Input type='color' value={colors} _placeholder={{opacity : '0.4', color : 'skyblue'}}  onChange={(e) => getColor(e)}/>
-              </InputGroup>
-            </Box>
-          </Box>
-            <Box bg='gray.800' h={'24'} px={5} py={3} mt={5}>
-              <Flex justifyContent={'space-between'} color='blue.300'>
-                <Text fontSize={'11px'}>HTML</Text>
-                <CopyToClipboard text={`<div class='glass'></div>`}>
-                  <Icon as={MdContentCopy} onClick={() => onCopy(`<div class='glass'></div>`)}/>
-                </CopyToClipboard>
-              </Flex>
-              <Code 
-                bg='gray.800'
-                color='blue.300' 
-                fontSize={'11px'}
-                children={`<div class='glass'></div>`}
-                >
-              </Code>
-            </Box>
+              <Box bg='gray.800' h={'24'} px={5} py={3} mt={5}>
+                <Flex justifyContent={'space-between'} color='blue.300'>
+                  <Text fontSize={'11px'}>HTML</Text>
+                  <CopyToClipboard text={`<div class='glass'></div>`}>
+                    <Icon as={MdContentCopy} onClick={() => onCopy(`<div class='glass'></div>`)}/>
+                  </CopyToClipboard>
+                </Flex>
+                <Code 
+                  bg='gray.800'
+                  color='blue.300' 
+                  fontSize={'11px'}
+                  children={`<div class='glass'></div>`}
+                  >
+                </Code>
+              </Box>
           </Box>
           <Grid templateRows={'repeat(2, 1fr)'} gap={1} mt='3'>
             <Box bg='gray.800' h={'full'} px={5} py={3}>
