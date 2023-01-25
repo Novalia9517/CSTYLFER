@@ -14,7 +14,8 @@ import {
   Button,
   HStack,
   Icon,
-  Code
+  Code,
+  SimpleGrid
 } from '@chakra-ui/react'
 import CustomSlider from '../Components/CustomSlider'
 import { useState } from 'react'
@@ -80,11 +81,11 @@ const Gradient = () => {
   return (
     <Layout>
         <Text fontSize={'3xl'} fontWeight='bold'>Gradient Generator</Text>
-        <Grid templateColumns={'repeat(2, 1fr)'} gap={4}>
+        <SimpleGrid columns={[1, null, 2]} spacing='40px'>
           <Flex 
             align='center'
             zIndex={'-10'}
-            w={96}
+            // w={{base : 88, md : 96, sm : 88}}
             h={96} bg='gray.200' 
             rounded={'md'} 
             display='grid' 
@@ -94,7 +95,7 @@ const Gradient = () => {
             border='1px' 
             borderColor={'pink.300'}>
               <Box 
-                w={80} 
+                w={[64, null,80]} 
                 h={'60%'} 
                 display='block' 
                 overflowX='hidden' 
@@ -111,14 +112,12 @@ const Gradient = () => {
                   width={'50%'}
                   height={12}
                   >
-                    {/* <InputGroup size='sm' w={20} color='blue.300'   borderRadius={'50%'}> */}
                         <Input type='color' value={color1} w={16}
                         onChange={(e) => setColor1(e.target.value)}/>
                         <Input type='color' value={color2} w={16}
                         onChange={(e) => setColor2(e.target.value)}/>
                         <Input type='color' value={color3} w={16}
                         onChange={(e) => setColor3(e.target.value)}/>
-                    {/* </InputGroup> */}
                   </Grid>
                 <Grid 
                   templateColumns={'repeat(3, 1fr)'} 
@@ -181,8 +180,8 @@ const Gradient = () => {
                 : null
                 }
             </GridItem>
-        </Grid>
-        <Grid templateColumns={'repeat(2, 1fr)'} gap={4} mt='3'>
+        </SimpleGrid>
+        <SimpleGrid columns={[1, null, 2]} spacing='40px' mt='3'>
           <Box bg='gray.800' h={'full'} px={5} py={3} mt={3}>
             <Flex justifyContent={'space-between'} color='blue.300'>
               <Text fontSize={'11px'}>HTML</Text>
@@ -229,7 +228,7 @@ const Gradient = () => {
               </Code>
             </Box>
           </Box>
-        </Grid>
+        </SimpleGrid>
     </Layout>
   )
 }
