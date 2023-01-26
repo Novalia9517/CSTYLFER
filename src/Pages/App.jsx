@@ -10,24 +10,27 @@ import Gradient from './Gradient'
 import GeoArt from './GeoArt'
 import BgPattern from './BgPattern'
 import BlobMaker from './BlobMaker'
+import { ThemeProvider } from '@chakra-ui/react'
 
 
 
 function App() {
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/get-started' element={<GetStarted/>}/>
-        <Route path='/neu' element={<Neumhorphisme/>}/>
-        <Route path='/glass' element={<Glassmhorphisme/>}/>
-        <Route path='/gradient' element={<Gradient/>}/>
-        <Route path='/geo-art' element={<GeoArt/>}/>
-        <Route path='/bg-pattern' element={<BgPattern/>}/>
-        <Route path='/blob-maker' element={<BlobMaker/>}/>
-      </Routes>
-    </BrowserRouter>
+    // <ThemeProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/get-started' element={<GetStarted/>}/>
+          <Route path='/neu' element={<Neumhorphisme/>}/>
+          <Route path='/glass' element={<Glassmhorphisme/>}/>
+          <Route path='/gradient' element={<Gradient/>}/>
+          <Route path='/geo-art' element={<GeoArt/>}/>
+          <Route path='/bg-pattern' element={<BgPattern/>}/>
+          <Route path='/blob-maker' element={<BlobMaker/>}/>
+        </Routes>
+      </BrowserRouter>
+    // </ThemeProvider>
     
   )
 }

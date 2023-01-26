@@ -33,7 +33,7 @@ const GetStarted = () => {
   return (
     <Layout>
         <Text fontSize={'3xl'} fontWeight='bold'>Getting Started</Text>
-        <Box display='flex' fontSize={'lg'} mt='5' fontWeight={'semibold'}>
+        <Box display='flex' fontSize={'2xl'} mt='5' fontWeight={'semibold'}>
             <Text>What to do to start</Text>
             <Text color={'pink.300'} ml='2' fontWeight={'bold'}>CStylfer</Text>
         </Box>
@@ -41,7 +41,7 @@ const GetStarted = () => {
             <Text>No need to do. Just choose  what theme you wanna try on the side bar, play with it. Get  CSS code that you need, copy it to your Web Project</Text>
             <Text mt={5} fontWeight='semibold'>Have fun and enjoy</Text>
         </Box>
-        <Text fontSize={'2xl'}>About The Designs theme</Text>
+        <Text fontSize={'2xl'} mt={3} fontWeight={'semibold'}>About The Designs theme</Text>
         {designs?.map((item, i) => {
           return (
             <Box mt={2}>
