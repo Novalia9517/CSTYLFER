@@ -23,6 +23,7 @@ import { useEffect } from 'react'
 import { MdContentCopy } from 'react-icons/md'
 import {CopyToClipboard} from 'react-copy-to-clipboard'
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 const Gradient = () => {
   const [typeGrad, setTypeGrad] = useState('linear')
@@ -60,15 +61,15 @@ const Gradient = () => {
   }
 
   const onCopy = (value) => {
-    toast.success('🦄 Wow so easy!', {
-      position: "bottom-center",
+    toast.info(`${value}`, {
+      position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "light",
+      theme: "colored",
       });
       // alert(value)
   }
@@ -183,7 +184,7 @@ const Gradient = () => {
         </SimpleGrid>
         <SimpleGrid columns={[1, null, 2]} spacing='40px' mt='3'>
           <Box bg='gray.800' h={'full'} px={5} py={3} mt={3}>
-            <Flex justifyContent={'space-between'} color='blue.300'>
+            <Flex justifyContent={'space-between'} color='blue.300'  cursor={'pointer'}>
               <Text fontSize={'11px'}>HTML</Text>
               <CopyToClipboard text={'<div class="gradient"></div>'}>
                 <Icon as={MdContentCopy}  onClick={() => onCopy(`HTML Code Copied`)}/>
@@ -198,7 +199,7 @@ const Gradient = () => {
             </Code>
           </Box>
           <Box bg='gray.800' h={'full'} px={5} py={3} mt={3}>
-            <Flex justifyContent={'space-between'} color='blue.300'>
+            <Flex justifyContent={'space-between'} color='blue.300'  cursor={'pointer'}>
               <Text fontSize={'11px'}>CSS</Text>
               <CopyToClipboard text={gradient}>
                 <Icon as={MdContentCopy} onClick={() => onCopy(`CSS Code Copied`)}/>
@@ -229,6 +230,18 @@ const Gradient = () => {
             </Box>
           </Box>
         </SimpleGrid>
+        <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
     </Layout>
   )
 }

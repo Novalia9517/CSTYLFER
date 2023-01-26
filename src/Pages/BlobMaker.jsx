@@ -22,6 +22,7 @@ import { useEffect } from 'react'
 import { MdContentCopy } from 'react-icons/md'
 import {CopyToClipboard} from 'react-copy-to-clipboard'
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 const BlobMaker = () => {
   const [typeGrad, setTypeGrad] = useState('linear')
@@ -78,16 +79,17 @@ const BlobMaker = () => {
     setBlob(radius)
   }
   const onCopy = (value) => {
-    toast.success('🦄 Wow so easy!', {
-      position: "bottom-center",
+    toast.info(`${value}`, {
+      position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "light",
+      theme: "colored",
       });
+    // toast(' Copied!')
       // alert(value)
   }
 
@@ -229,7 +231,7 @@ const BlobMaker = () => {
           flexWrap={'wrap'}
           >
           <Box bg='gray.800' h={'full'} px={5} py={3} mt={3}>
-            <Flex justifyContent={'space-between'} color='blue.300'>
+            <Flex justifyContent={'space-between'} color='blue.300'  cursor={'pointer'}>
               <Text fontSize={'11px'}>HTML</Text>
               <CopyToClipboard text={'<div class="blob"></div>'}>
                 <Icon as={MdContentCopy}  onClick={() => onCopy(`HTML Code Copied`)}/>
@@ -244,7 +246,7 @@ const BlobMaker = () => {
             </Code>
           </Box>
           <Box bg='gray.800' h={'full'} px={5} py={3} mt={3}>
-            <Flex justifyContent={'space-between'} color='blue.300'>
+            <Flex justifyContent={'space-between'} color='blue.300' cursor={'pointer'}>
               <Text fontSize={'11px'}>CSS</Text>
               <CopyToClipboard text={gradient}>
                 <Icon as={MdContentCopy} onClick={() => onCopy(`CSS Code Copied`)}/>
@@ -275,6 +277,18 @@ const BlobMaker = () => {
               </Code>
             </Box>
           </Box>
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
         </Grid>
     </Layout>
   )
