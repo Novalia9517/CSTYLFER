@@ -21,9 +21,8 @@ import CustomSlider from '../Components/CustomSlider'
 import { useEffect } from 'react'
 import {CopyToClipboard} from 'react-copy-to-clipboard'
 import { MdContentCopy} from 'react-icons/md'
-
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 const BgPattern = () => {
   const [bgColor, setBgColor] = useState('#fefaff')
@@ -101,15 +100,15 @@ const BgPattern = () => {
   }
 
   const onCopy = (value) => {
-    toast.success('🦄 Wow so easy!', {
-      position: "bottom-center",
+    toast.info(`${value}`, {
+      position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "light",
+      theme: "colored",
       });
   }
 
@@ -227,10 +226,10 @@ const BgPattern = () => {
         </Flex>
         <SimpleGrid columns={[1, null, 2]} spacing='20px'>
           <Box w={'full'}bg='gray.800' h={'24'} px={5} py={3} mt={5}>
-            <Flex justifyContent={'space-between'} color='blue.300'>
+            <Flex justifyContent={'space-between'} color='blue.300' cursor={'pointer'}>
               <Text fontSize={'11px'}>HTML</Text>
               <CopyToClipboard text={`<div class='glass'></div>`}>
-                <Icon as={MdContentCopy} onClick={() => onCopy(`<div class='pattern'></div>`)}/>
+                <Icon as={MdContentCopy} onClick={() => onCopy(`HTML Code Copied`)}/>
               </CopyToClipboard>
             </Flex>
             <Code 
@@ -243,7 +242,7 @@ const BgPattern = () => {
           </Box>
           <Grid w={'full'} templateRows={'repeat(2, 1fr)'} gap={1} mt='3'>
               <Box bg='gray.800' h={''} px={5} py={3}>
-                <Flex justifyContent={'space-between'} color='blue.300'>
+                <Flex justifyContent={'space-between'} color='blue.300'  cursor={'pointer'}>
                   <Text fontSize={'11px'}>CSS</Text>
                   <CopyToClipboard text={activeBg}>
                     <Icon 
@@ -283,6 +282,18 @@ const BgPattern = () => {
                 </Box>
               </Box>
             </Grid>
+            <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
         </SimpleGrid>
     </Layout>
   )

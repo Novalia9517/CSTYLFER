@@ -25,15 +25,15 @@ const Glassmhorphisme = () => {
   }
 
   const onCopy = (value) => {
-    toast.success('🦄 Wow so easy!', {
-      position: "bottom-center",
+    toast.info(`${value}`, {
+      position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: "light",
+      theme: "colored",
       });
       // alert(value)
   }
@@ -120,7 +120,7 @@ const Glassmhorphisme = () => {
               </Box>
             </Box>
               <Box bg='gray.800' h={'24'} px={5} py={3} mt={5}>
-                <Flex justifyContent={'space-between'} color='blue.300'>
+                <Flex justifyContent={'space-between'} color='blue.300'  cursor={'pointer'}>
                   <Text fontSize={'11px'}>HTML</Text>
                   <CopyToClipboard text={`<div class='glass'></div>`}>
                     <Icon as={MdContentCopy} onClick={() => onCopy(`<div class='glass'></div>`)}/>
@@ -137,7 +137,7 @@ const Glassmhorphisme = () => {
           </Box>
           <Grid templateRows={'repeat(2, 1fr)'} gap={1} mt='3'>
             <Box bg='gray.800' h={'full'} px={5} py={3}>
-              <Flex justifyContent={'space-between'} color='blue.300'>
+              <Flex justifyContent={'space-between'} color='blue.300'  cursor={'pointer'}>
                 <Text fontSize={'11px'}>CSS</Text>
                 <CopyToClipboard text={glass}>
                   <Icon as={MdContentCopy} onClick={() => onCopy(`CSS Code Copied`)}/>
@@ -174,7 +174,18 @@ const Glassmhorphisme = () => {
               </Box>
             </Box>
           </Grid>
-
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
         </Grid>
     </Layout>
   )

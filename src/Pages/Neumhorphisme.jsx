@@ -20,6 +20,8 @@ import { MdContentCopy } from 'react-icons/md'
 import CustomSlider from '../Components/CustomSlider'
 import {BsArrowUpLeftSquare} from 'react-icons/bs'
 import { useEffect } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 const Neumhorphisme = () => {
     const [width, setWidth] = useState(200)
@@ -89,7 +91,18 @@ const Neumhorphisme = () => {
         }
       }
       setNeu(neu)
-
+    }
+    const onCopy = (value) => {
+      toast.info(`${value}`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
     }
 
     useEffect(() => {
@@ -203,9 +216,9 @@ const Neumhorphisme = () => {
         </Grid>
         <Grid templateColumns={'repeat(2, 1fr)'} gap={4} mt='3'>
           <Box bg='gray.800' h={'full'} px={5} py={3} mt={3}>
-            <Flex justifyContent={'space-between'} color='blue.300'>
+            <Flex justifyContent={'space-between'} color='blue.300' cursor={'pointer'}>
               <Text fontSize={'11px'}>HTML</Text>
-              <Icon as={MdContentCopy}/>
+              <Icon as={MdContentCopy} onClick={() => onCopy('HTML Code Copied')}/>
             </Flex>
             <Code 
               bg='gray.800'
@@ -216,9 +229,9 @@ const Neumhorphisme = () => {
             </Code>
           </Box>
           <Box bg='gray.800' h={'full'} px={5} py={3} mt={3}>
-            <Flex justifyContent={'space-between'} color='blue.300'>
+            <Flex justifyContent={'space-between'} color='blue.300' cursor={'pointer'}>
               <Text fontSize={'11px'}>CSS</Text>
-              <Icon as={MdContentCopy}/>
+              <Icon as={MdContentCopy} onClick={() => onCopy('CSS Code Copied')}/>
             </Flex>
             <Box display={'flex'} flexDirection={'column'}>
               <Code 
@@ -248,6 +261,18 @@ const Neumhorphisme = () => {
             </Box>
           </Box>
         </Grid>
+        <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+          />
     </Box>
    </Layout>
   )
