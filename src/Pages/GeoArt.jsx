@@ -1,12 +1,12 @@
-import React from 'react'
-import Layout from '../Components/Layout'
+import React from "react";
+import Layout from "../Components/Layout";
 
 const GeoArt = () => {
   return (
     <Layout>
-        <div>GeoArt</div>
+      <div>GeoArt</div>
     </Layout>
-  )
-}
+  );
+};
 
-export default GeoArt
+export default GeoArt;

@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.pattern {
+            width : 200px;
+            height : 200px;
+            opacity : 1;
+            border-radius : 10px;
+            background-size : 400px 400px;
+            background-image : linear-gradient(#444cf7 2.2px, transparent 2.2px), linear-gradient(to right, #444cf7 2.2px,#fefaff 2.2px);
+              }
