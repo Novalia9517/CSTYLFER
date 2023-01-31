@@ -109,7 +109,7 @@ const Neumhorphisme = () => {
         `${Math.ceil(blue * 0.8).toString(16)}`;
       // console.log(rgb1, rgb2)
       if (value == "concave") {
-        setBackgroundImage(`linear-gradient(280deg, ${rgb1}, ${rgb2});`);
+        setBackgroundImage(`linear-gradient(345deg, ${rgb1}, ${rgb2});`);
         setInset(false);
         setLinear(true);
       } else {
