@@ -206,7 +206,7 @@ const Glassmhorphisme = () => {
               <CopyToClipboard text={`<div class='glass'></div>`}>
                 <Icon
                   as={MdContentCopy}
-                  onClick={() => onCopy(`<div class='glass'></div>`)}
+                  onClick={() => onCopy(`HTML Code Copied`)}
                 />
               </CopyToClipboard>
             </Flex>
