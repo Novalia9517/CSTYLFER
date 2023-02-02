@@ -38,7 +38,7 @@ const Review = ({ top, left, color, title, rev, id }) => {
     <Box
       ref={ref}
       as={motion.div}
-      animate={animate}
+      // animate={animate}
       mt={top}
       ml={left}
       h="200px"
